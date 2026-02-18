@@ -1,4 +1,4 @@
-package com.api.marketplace.domain.model.webhook;
+package com.api.marketplace.domain.webhook.model;
 
 import java.util.ArrayList;
 import java.util.List;

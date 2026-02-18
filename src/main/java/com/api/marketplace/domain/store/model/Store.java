@@ -1,4 +1,4 @@
-package com.api.marketplace.domain.model.store;
+package com.api.marketplace.domain.store.model;
 
 import java.util.UUID;
 

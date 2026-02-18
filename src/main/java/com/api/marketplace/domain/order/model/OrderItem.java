@@ -1,4 +1,4 @@
-package com.api.marketplace.domain.model.order;
+package com.api.marketplace.domain.order.model;
 
 import java.math.BigDecimal;
 

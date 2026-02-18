@@ -1,8 +1,8 @@
 package com.api.marketplace.application.useCases.createOrder;
 
-import com.api.marketplace.domain.gateway.OrderRepositoryGateway;
-import com.api.marketplace.domain.model.order.Order;
-import com.api.marketplace.domain.model.order.OrderItem;
+import com.api.marketplace.domain.order.gateway.OrderRepositoryGateway;
+import com.api.marketplace.domain.order.model.Order;
+import com.api.marketplace.domain.order.model.OrderItem;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class CreateOrderUseCase {
 
         return new CreateOrderOutput(
                 savedOrder.getExternalId(),
-                savedOrder.getStoreId(),
+                savedOrder.getStoreExternalId(),
                 savedOrder.calculateTotalPrice(),
                 itemOutputList
         );

@@ -1,4 +1,4 @@
-package com.api.marketplace.domain.model.order;
+package com.api.marketplace.domain.order.model;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -11,16 +11,16 @@ public class Order {
     private final List<OrderItem> items;
 
     // external Aggregate
-    private final UUID storeId;
+    private final UUID storeExternalId;
 
-    public Order(Integer id, UUID externalId, UUID storeId, OrderStatus status, List<OrderItem> items) {
+    public Order(Integer id, UUID externalId, UUID storeExternalId, OrderStatus status, List<OrderItem> items) {
         if (items == null || items.isEmpty()) {
             throw new IllegalArgumentException("Order must have at least one item");
         }
 
         this.id = id;
         this.externalId = externalId;
-        this.storeId = storeId;
+        this.storeExternalId = storeExternalId;
         this.status = status == null ? OrderStatus.CREATED : status;
         this.items = List.copyOf(items);
     }
@@ -29,8 +29,8 @@ public class Order {
         return id;
     }
 
-    public UUID getStoreId() {
-        return storeId;
+    public UUID getStoreExternalId() {
+        return storeExternalId;
     }
 
     public UUID getExternalId() {

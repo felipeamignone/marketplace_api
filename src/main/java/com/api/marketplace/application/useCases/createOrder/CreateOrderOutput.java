@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 public record CreateOrderOutput(
-        UUID externalId,
+        UUID id,
         UUID storeId,
         BigDecimal totalPrice,
         List<OrderItemOutput> items

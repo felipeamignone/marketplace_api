@@ -5,36 +5,30 @@ import java.util.List;
 import java.util.UUID;
 
 public class Order {
-    private final Integer id;
-    private final UUID externalId;
+    private final UUID id;
     private OrderStatus status;
     private final List<OrderItem> items;
 
     // external Aggregate
-    private final UUID storeExternalId;
+    private final UUID storeId;
 
-    public Order(Integer id, UUID externalId, UUID storeExternalId, OrderStatus status, List<OrderItem> items) {
+    public Order(UUID id, UUID storeId, OrderStatus status, List<OrderItem> items) {
         if (items == null || items.isEmpty()) {
             throw new IllegalArgumentException("Order must have at least one item");
         }
 
         this.id = id;
-        this.externalId = externalId;
-        this.storeExternalId = storeExternalId;
+        this.storeId = storeId;
         this.status = status == null ? OrderStatus.CREATED : status;
         this.items = List.copyOf(items);
     }
 
-    public Integer getId() {
+    public UUID getId() {
         return id;
     }
 
-    public UUID getStoreExternalId() {
-        return storeExternalId;
-    }
-
-    public UUID getExternalId() {
-        return externalId;
+    public UUID getStoreId() {
+        return storeId;
     }
 
     public OrderStatus getStatus() {

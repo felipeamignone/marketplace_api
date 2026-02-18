@@ -20,7 +20,7 @@ public class CreateOrderUseCase {
                 item.quantity()
         )).toList();
 
-        Order newOrder = new Order(null, null, input.storeId(), null, items);
+        Order newOrder = new Order(null, null, null, items);
         Order savedOrder = orderRepository.save(newOrder);
 
         List<OrderItemOutput> itemOutputList = savedOrder.getItems().stream()
@@ -32,8 +32,8 @@ public class CreateOrderUseCase {
                 )).toList();
 
         return new CreateOrderOutput(
-                savedOrder.getExternalId(),
-                savedOrder.getStoreExternalId(),
+                savedOrder.getId(),
+                savedOrder.getStoreId(),
                 savedOrder.calculateTotalPrice(),
                 itemOutputList
         );

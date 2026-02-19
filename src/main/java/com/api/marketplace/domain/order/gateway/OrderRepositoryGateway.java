@@ -5,6 +5,6 @@ import com.api.marketplace.domain.order.model.Order;
 import java.util.UUID;
 
 public interface OrderRepositoryGateway {
-    Order findByExternalId(UUID externalId);
+    Order findById(UUID id);
     Order save(Order newOrder);
 }

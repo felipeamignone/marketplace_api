@@ -6,8 +6,6 @@ import com.api.marketplace.application.store.useCases.CreateStoreUseCase;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
-
 @RestController
 @RequestMapping("/stores")
 public class StoreController {
@@ -22,6 +20,6 @@ public class StoreController {
         CreateStoreInput input = new CreateStoreInput(body.name(), body.cnpj());
         StoreOutput result = createStoreUseCase.execute(input);
         StoreResponse response = StoreMapper.toResponse(result);
-        return ResponseEntity.created().body(response);
+        return ResponseEntity.ok(response);
     }
 }

@@ -6,8 +6,6 @@ import com.api.marketplace.application.webhook.useCases.CreateWebhookUseCase;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
-
 @RestController
 @RequestMapping("/webhooks")
 public class WebhookController {
@@ -25,6 +23,6 @@ public class WebhookController {
         );
         WebhookOutput result = createWebhookUseCase.execute(input);
         WebhookResponse response = WebhookMapper.toResponse(result);
-        return ResponseEntity.created().body(response);
+        return ResponseEntity.ok(response);
     }
 }

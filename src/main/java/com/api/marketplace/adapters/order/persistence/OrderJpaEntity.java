@@ -24,7 +24,6 @@ public class OrderJpaEntity {
 
     protected OrderJpaEntity () {}
 
-
     public OrderJpaEntity(UUID id, OrderStatus status, UUID storeId) {
         this.id = id;
         this.status = status;

@@ -20,13 +20,14 @@ public class CreateOrderUseCase {
     }
 
     public OrderOutput execute(CreateOrderInput input) {
+        //
         List<OrderItem> items = input.items().stream().map(item -> new OrderItem(
                 item.name(),
                 new BigDecimal("10.99"), //deve buscar pelo produto cadastrado no banco.
                 item.quantity()
         )).toList();
 
-        Order newOrder = new Order(null, null, null, items);
+        Order newOrder = new Order(null, input.storeId(), null, items);
         Order savedOrder = orderRepository.save(newOrder);
 
         List<OrderItemOutput> itemOutputList = savedOrder.getItems().stream()

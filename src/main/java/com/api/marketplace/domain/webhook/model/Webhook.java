@@ -2,19 +2,19 @@ package com.api.marketplace.domain.webhook.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Webhook {
-    private final Integer id;
+    private final UUID id;
     private String callbackUrl;
-    private final List<Integer> storeIds = new ArrayList<>();
+    private final List<UUID> storeIds = new ArrayList<>();
 
-
-    public Webhook(Integer id, String callbackUrl) {
+    public Webhook(UUID id, String callbackUrl) {
         this.id = id;
         this.callbackUrl = callbackUrl;
     }
 
-    public Integer getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -22,7 +22,7 @@ public class Webhook {
         return callbackUrl;
     }
 
-    public List<Integer> getStoreIds() {
+    public List<UUID> getStoreIds() {
         return storeIds;
     }
 
@@ -30,14 +30,14 @@ public class Webhook {
         this.callbackUrl = callbackUrl;
     }
 
-    public void addStoreId(Integer newStoreId) throws IllegalArgumentException {
+    public void addStoreId(UUID newStoreId) throws IllegalArgumentException {
         if(storeIds.stream().anyMatch(id -> id.equals(newStoreId))){
             throw new IllegalArgumentException("StoreId already added");
         }
         this.storeIds.add(newStoreId);
     }
 
-    public void removeStoreId(Integer storeIdToRemove) throws IllegalArgumentException {
+    public void removeStoreId(UUID storeIdToRemove) throws IllegalArgumentException {
         if(storeIds.stream().noneMatch(id -> id.equals(storeIdToRemove))){
             throw new IllegalArgumentException("StoreId not found");
         }

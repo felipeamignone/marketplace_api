@@ -2,6 +2,7 @@ package com.api.marketplace.config;
 
 import com.api.marketplace.domain.exceptions.OrderNotFoundException;
 import com.api.marketplace.domain.exceptions.StoreNotFoundException;
+import com.api.marketplace.domain.exceptions.WebhookNotFoundToStoreIdException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -23,6 +24,16 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(OrderNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleOrderNotFound(OrderNotFoundException ex) {
+        ErrorResponse body = new ErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                "Not Found",
+                ex.getMessage()
+        );
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);
+    }
+
+    @ExceptionHandler(WebhookNotFoundToStoreIdException.class)
+    public ResponseEntity<ErrorResponse> handleWebhookNotFoundToStoreId(WebhookNotFoundToStoreIdException ex) {
         ErrorResponse body = new ErrorResponse(
                 HttpStatus.NOT_FOUND.value(),
                 "Not Found",
